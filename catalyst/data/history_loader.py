@@ -21,7 +21,7 @@ from abc import (
 from numpy import concatenate
 from lru import LRU
 from pandas import isnull
-from pandas.tslib import normalize_date
+from pandas import Timestamp
 from toolz import sliding_window
 
 from six import with_metaclass
@@ -93,8 +93,8 @@ class HistoryCompatibleUSEquityAdjustmentReader(object):
             The adjustments as a dict of loc -> Float64Multiply
         """
         sid = int(asset)
-        start = normalize_date(dts[0])
-        end = normalize_date(dts[-1])
+        start = Timestamp.normalize(dts[0])
+        end = Timestamp.normalize(dts[-1])
         adjs = {}
         if field != 'volume':
             mergers = self._adjustments_reader.get_adjustments_for_sid(

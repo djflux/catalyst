@@ -14,7 +14,7 @@
 # limitations under the License.
 from contextlib2 import ExitStack
 from logbook import Logger, Processor
-from pandas.tslib import normalize_date
+from pandas import Timestamp
 from catalyst.protocol import BarData
 from catalyst.utils.api_support import ZiplineAPI
 from six import viewkeys
@@ -229,7 +229,7 @@ class AlgorithmSimulator(object):
                 elif action == SESSION_END:
                     # End of the session.
                     if emission_rate == 'daily':
-                        handle_benchmark(normalize_date(dt))
+                        handle_benchmark(Timestamp.normalize(dt))
                     execute_order_cancellation_policy()
 
                     yield self._get_daily_message(dt, algo, algo.perf_tracker)

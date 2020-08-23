@@ -117,9 +117,9 @@ def create_dividend(sid, payment, declared_date, ex_date, pay_date):
         'net_amount': payment,
         'payment_sid': None,
         'ratio': None,
-        'declared_date': pd.tslib.normalize_date(declared_date),
-        'ex_date': pd.tslib.normalize_date(ex_date),
-        'pay_date': pd.tslib.normalize_date(pay_date),
+        'declared_date': pd.Timestamp.normalize(declared_date),
+        'ex_date': pd.Timestamp.normalize(ex_date),
+        'pay_date': pd.Timestamp.normalize(pay_date),
         'type': DATASOURCE_TYPE.DIVIDEND,
         'source_id': 'MockDividendSource'
     })
@@ -134,9 +134,9 @@ def create_stock_dividend(sid, payment_sid, ratio, declared_date,
         'ratio': ratio,
         'net_amount': None,
         'gross_amount': None,
-        'dt': pd.tslib.normalize_date(declared_date),
-        'ex_date': pd.tslib.normalize_date(ex_date),
-        'pay_date': pd.tslib.normalize_date(pay_date),
+        'dt': pd.Timestamp.normalize(declared_date),
+        'ex_date': pd.Timestamp.normalize(ex_date),
+        'pay_date': pd.Timestamp.normalize(pay_date),
         'type': DATASOURCE_TYPE.DIVIDEND,
         'source_id': 'MockDividendSource'
     })

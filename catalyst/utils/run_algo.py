@@ -281,8 +281,8 @@ def _run(handle_data,
         # We still need to support bundles for other misc data, but we
         # can handle this later.
 
-        if (start and start != pd.tslib.normalize_date(start)) or \
-                (end and end != pd.tslib.normalize_date(end)):
+        if (start and start != pd.Timestamp.normalize(start)) or \
+                (end and end != pd.Timestamp.normalize(end)):
             # todo: add to Sim_Params the option to
             # start & end at specific times
             log.warn(

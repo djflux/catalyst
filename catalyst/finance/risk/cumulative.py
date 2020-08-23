@@ -18,7 +18,7 @@ import logbook
 import numpy as np
 
 import pandas as pd
-from pandas.tseries.tools import normalize_date
+from pandas import Timestamp
 
 from six import iteritems
 
@@ -80,7 +80,7 @@ class RiskMetricsCumulative(object):
         # on the first day.
         self.day_before_start = self.start_session - self.sessions.freq
 
-        last_day = normalize_date(sim_params.end_session)
+        last_day = Timestamp.normalize(sim_params.end_session)
         if last_day not in self.sessions:
             last_day = pd.tseries.index.DatetimeIndex(
                 [last_day]
